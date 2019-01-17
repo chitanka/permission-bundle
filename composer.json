@@ -1,0 +1,17 @@
+{
+	"name": "chitanka/permission-bundle",
+	"description": "A simple system for managing permissions",
+	"type": "symfony-bundle",
+	"keywords": ["permission", "symfony roles"],
+	"license": [
+		"MIT"
+	],
+	"require": {
+		"php": ">=5.5.9"
+	},
+	"autoload": {
+		"psr-4": {
+			"Chitanka\\PermissionBundle\\": ""
+		}
+	}
+}
