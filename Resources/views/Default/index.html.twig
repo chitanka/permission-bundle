@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Управление на правата на {{ user.username }}{% endblock %}
+{% block content %}
+	<h1 class="page-header">
+		{{ block('title') }}
+	</h1>
+
+	<h2>Текущи права</h2>
+	<ul>
+		{% for role in user.roles %}
+			<li>
+				{{ ('roles.'~role)|trans }}
+				{% if role in revokableRoles %}
+					<form action="{{ path('chitanka_permission_revoke', {username: user.username}) }}" method="post" style="display: inline">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="hidden" name="role" value="{{ role }}">
+						<button type="submit" class="btn btn-xs btn-danger">{{ 'Отнемане' }}</button>
+					</form>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+
+	{% if grantableRoles is not empty %}
+		<h2>Възможни права</h2>
+		<ul>
+			{% for grantableRole in grantableRoles %}
+				<li>
+					{{ ('roles.'~grantableRole)|trans }}
+					<form action="{{ path('chitanka_permission_revoke', {username: user.username}) }}" method="post" style="display: inline">
+						<input type="hidden" name="_method" value="PUT">
+						<input type="hidden" name="role" value="{{ grantableRole }}">
+						<button type="submit" class="btn btn-xs btn-success">{{ 'Даване' }}</button>
+					</form>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

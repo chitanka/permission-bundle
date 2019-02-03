@@ -1,0 +1,6 @@
+services:
+    _defaults:
+        public: true
+
+    Chitanka\PermissionBundle\Domain\Master:
+        arguments: ["@doctrine", "%chitanka_permission.transitions%"]

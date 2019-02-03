@@ -1,6 +1,6 @@
 {
 	"name": "chitanka/permission-bundle",
-	"description": "A simple system for managing permissions",
+	"description": "A simple system for managing user permissions",
 	"type": "symfony-bundle",
 	"keywords": ["permission", "symfony roles"],
 	"license": [
