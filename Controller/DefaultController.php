@@ -24,7 +24,7 @@ class DefaultController extends Controller {
 		$role = $request->get(self::PARAM_ROLE);
 		$this->assertManagerCanManageRole($role);
 		$user = $this->loadUser($username);
-		$this->getMaster()->grantRole($user, $role);
+		$this->getMaster()->grantRole($user, $role, $this->getManagingUser());
 		return $this->redirectToIndex($user);
 	}
 
@@ -32,7 +32,7 @@ class DefaultController extends Controller {
 		$role = $request->get(self::PARAM_ROLE);
 		$this->assertManagerCanManageRole($role);
 		$user = $this->loadUser($username);
-		$this->getMaster()->revokeRole($user, $role);
+		$this->getMaster()->revokeRole($user, $role, $this->getManagingUser());
 		return $this->redirectToIndex($user);
 	}
 

@@ -1,6 +1,7 @@
 <?php namespace Chitanka\PermissionBundle\Domain;
 
 use Chitanka\PermissionBundle\DependencyInjection\Configuration;
+use Chitanka\PermissionBundle\Entity\PermissionLog;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -50,18 +51,19 @@ class Master {
 		return $grantableRoles;
 	}
 
-	public function grantRole(UserInterface $user, $role) {
+	public function grantRole(UserInterface $user, $role, UserInterface $manager) {
 		$user->addRole($role);
-		$this->saveUser($user);
+		$this->saveUser($user, PermissionLog::createForGranting((string)$manager, (string)$user, $role));
 	}
 
-	public function revokeRole(UserInterface $user, $role) {
+	public function revokeRole(UserInterface $user, $role, UserInterface $manager) {
 		$user->removeRole($role);
-		$this->saveUser($user);
+		$this->saveUser($user, PermissionLog::createForRevoking((string)$manager, (string)$user, $role));
 	}
 
-	public function saveUser(UserInterface $user) {
+	public function saveUser(UserInterface $user, PermissionLog $log) {
 		$this->em->persist($user);
+		$this->em->persist($log);
 		$this->em->flush();
 	}
 
