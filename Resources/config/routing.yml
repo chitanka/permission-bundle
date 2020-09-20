@@ -1,14 +1,14 @@
 chitanka_permission_index:
     path:     /users/{username}/permissions
     methods:  [GET]
-    defaults: { _controller: ChitankaPermissionBundle:Default:index }
+    defaults: { _controller: Chitanka\PermissionBundle\Controller\DefaultController::indexAction }
 
 chitanka_permission_grant:
     path:     /users/{username}/permissions
     methods:  [PUT]
-    defaults: { _controller: ChitankaPermissionBundle:Default:grantRole }
+    defaults: { _controller: Chitanka\PermissionBundle\Controller\DefaultController::grantRoleAction }
 
 chitanka_permission_revoke:
     path:     /users/{username}/permissions
     methods:  [DELETE]
-    defaults: { _controller: ChitankaPermissionBundle:Default:revokeRole }
+    defaults: { _controller: Chitanka\PermissionBundle\Controller\DefaultController::revokeRoleAction }
