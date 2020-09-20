@@ -12,7 +12,7 @@ class DefaultController extends Controller {
 		$user = $this->loadUser($username);
 		$managingUser = $this->getManagingUser();
 		$master = $this->getMaster();
-		return $this->render('ChitankaPermissionBundle:Default:index.html.twig', [
+		return $this->render('@ChitankaPermission/Default/index.html.twig', [
 			'user' => $user,
 			'manager' => $managingUser,
 			'revokableRoles' => $master->getRevokableRolesForUser($user, $managingUser),
