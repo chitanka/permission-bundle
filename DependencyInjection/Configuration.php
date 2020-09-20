@@ -19,8 +19,8 @@ class Configuration implements ConfigurationInterface {
 	 * {@inheritdoc}
 	 */
 	public function getConfigTreeBuilder() {
-		$treeBuilder = new TreeBuilder();
-		$treeBuilder->root('chitanka_permission')
+		$treeBuilder = new TreeBuilder('chitanka_permission');
+		$treeBuilder->getRootNode()
 			->children()
 				->arrayNode(self::TRANSITIONS)
 					->arrayPrototype()
