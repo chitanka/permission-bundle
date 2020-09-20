@@ -15,7 +15,7 @@
 					<form action="{{ path('chitanka_permission_revoke', {username: user.username}) }}" method="post" style="display: inline">
 						<input type="hidden" name="_method" value="DELETE">
 						<input type="hidden" name="role" value="{{ role }}">
-						<button type="submit" class="btn btn-xs btn-danger">{{ 'Отнемане' }}</button>
+						<button type="submit" class="btn btn-sm btn-danger">{{ 'Отнемане' }}</button>
 					</form>
 				{% endif %}
 			</li>
@@ -31,7 +31,7 @@
 					<form action="{{ path('chitanka_permission_revoke', {username: user.username}) }}" method="post" style="display: inline">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="role" value="{{ grantableRole }}">
-						<button type="submit" class="btn btn-xs btn-success">{{ 'Даване' }}</button>
+						<button type="submit" class="btn btn-sm btn-success">{{ 'Даване' }}</button>
 					</form>
 				</li>
 			{% endfor %}
