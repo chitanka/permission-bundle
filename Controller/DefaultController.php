@@ -45,7 +45,7 @@ class DefaultController extends Controller {
 	 * @return \App\Entity\User|UserInterface
 	 */
 	private function loadUser($username) {
-		return $this->getDoctrine()->getRepository('App:User')->loadUserByUsername($username);
+		return $this->getDoctrine()->getRepository(\App\Entity\User::class)->loadUserByUsername($username);
 	}
 
 	private function getManagingUser() {
