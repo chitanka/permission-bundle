@@ -22,7 +22,7 @@ class Master {
 		if (!isset($this->targetRoleByManagerMap)) {
 			$this->buildTargetRoleByManagerMap();
 		}
-		$managedRoles = call_user_func_array('array_merge', array_intersect_key($this->targetRoleByManagerMap, array_flip($manager->getRoles())));
+		$managedRoles = call_user_func_array('array_merge', array_values(array_intersect_key($this->targetRoleByManagerMap, array_flip($manager->getRoles()))));
 		return in_array(self::normalizeRoleName($role), $managedRoles);
 	}
 
